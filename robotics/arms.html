@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- These three meta needed for bootstrap -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Your Stylesheet -->
+    <link href="style.css" rel="stylesheet" />
+<!-- links it to css file -->
+  </head>
+  <body>
+    <nav id="nav">
+      <ul>
+          <li id="company-name">Robotics</li>
+          <li class="page-link"><a href="index.html">Home</a></li>
+          <li class="page-link"><a href="movement.html">Drive Systems</a></li>
+          <li class="page-link"><a href="electronic.html">Electrical Systems</a></li>
+          <li class="page-link"><a href="other.html">Other Math</a></li>
+          <!--<li class="page-link"><a href="Economics.html">Economics</a></li>-->
+        </ul>
+    </nav>
+    <p></p>
+    <ul>
+      <li><a>i</a></li>
+      <li><textarea id = "cgai" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "cgaj" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "cgak" rows="1" cols="3"></textarea></li>
+      <li><a>units</a></li>
+      <li><select id="unitsa"><option value="1">Metric (cm)</option><option value="0">US Coustomary (in)</option></select></li>
+      <li><a>mass of the arm</a></li>
+      <li><textarea id = "am" rows="1" cols="3"></textarea></li>
+      <li><a>Length of the arm</a></li>
+      <li><textarea id = "al" rows="1" cols="3"></textarea></li>
+      <li><a>Hight of the arm at the axle</a></li>
+      <li><textarea id = "ah" rows="1" cols="3"></textarea></li>
+      <li><a>mass of the payload</a></li>
+      <li><textarea id = "pm" rows="1" cols="3"></textarea></li>
+      <li><a>tilt</a></li>
+      <li><textarea id = "tilta" rows="1" cols="3"></textarea></li>
+      <li><a>Motor: Stall Torque </a><textarea id="mta" rows="1" cols="3"></textarea><a> Free Speed </a><textarea id="msa" rows="1" cols="3"></textarea><a> Gear Ratio from Motor to Arm </a><textarea id="gra" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button  id="rnrm">Run Arm </button>
+    <p id = armAns></p>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="vectors.js"></script>
+    <script type="text/javascript" src="containers.js"></script>
+    <script type="text/javascript" src="physics.js"></script>
+    <script type="text/javascript" src="script2.js"></script>
+    <!-- can put a different script to handle clicks on this page-->
+  </body>
+</html>

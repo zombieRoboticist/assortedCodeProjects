@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://api.mathjs.org"></script> -->
+  <!-- <script src="math.js" type="text/javascript"></script> -->
+  <script type="text/javascript" src= " node_modules\.bin\mathjs"></script>
+  <title>contour map</title>
+</head>
+
+<body>
+  <h1>Create a contour map of a 2 variable funtion.</h1>
+  <a>Equation (use variables x, y, and z): Z=</a>
+  <textarea id="equ" rows="1" cols="12"></textarea>
+  <a >x bounds:</a>
+  <textarea id="xlo" cols="3" rows="1">Lower</textarea>
+  <textarea id="xhigh" cols="3" rows="1">Upper</textarea>
+  <a >y bounds:</a>
+  <textarea id="ylo" cols="3" rows="1">Lower</textarea>
+  <textarea id="yhigh" cols="3" rows="1">Upper</textarea>
+  <a >z bounds:</a>
+  <textarea id="zlo" cols="3" rows="1">Lower</textarea>
+  <textarea id="zhigh" cols="3" rows="1">Upper</textarea>
+  <button id="calc">Calculate</button>
+  <canvas id="graph" width="10" height="10"style="border:1px solid #000000;"></canvas>
+</body>
+
+</html>

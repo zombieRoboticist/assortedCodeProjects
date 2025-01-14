@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- These three meta needed for bootstrap -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Your Stylesheet -->
+    <link href="style.css" rel="stylesheet" /> 
+<!-- links it to css file -->
+  </head>
+  <body>
+    <nav id="nav">
+      <ul>
+          <li id="company-name">Robotics</li>
+          <li class="page-link"><a href="index.html">Home</a></li>
+          <li class="page-link"><a href="arms.html">Arm Systems</a></li>
+          <li class="page-link"><a href="movement.html">Drive Systems</a></li>
+          <li class="page-link"><a href="electronic.html">Electrical Systems</a></li>
+<!--           <li class="page-link"><a href="other.html">Other Math</a></li> -->
+        </ul>
+    </nav>
+    <h1>Accuracy</h1>
+    <h2>Using Standard Deviation</h2>
+    <p id = "acc"></p>
+    <div>
+      <textarea id = "accIn" rows="5" cols="30"></textarea>
+    </div>
+    <h1>Vector Math</h1>
+
+    <p> i, j, and k are the unit vectors (they go 1 unit in an axial direction) for the x axis, y axis, and z axis respectively.</p>
+
+    <h2>Angle/Magnitude to ijk form</h2>
+    <!-- <p>Formula: magnitude = (i^2 + j^2 + k^2)^.5</p> -->
+    <ul id = "inputs">
+      <li><a>Magnitude</a></li>
+      <li><textarea id = "magIn" rows="1" cols="3"></textarea></li>
+      <li><a>Theta xy</a></li>
+      <li><textarea id = "xyIn" rows="1" cols="3"></textarea></li>
+      <li><a>Theta zx</a></li>
+      <li><textarea id = "xzIn" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button id="mgijk" >Convert</button>
+    <p id = "mag-th"></p>
+    <h2>ijk form to Angle/Magnitude</h2>
+    <ul id = "inputs">
+      <li><a>i</a></li>
+      <li><textarea id = "iIn" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "jIn" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "kIn" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button id="ijkmg" >Convert</button>
+    <p id = "ijk"></p>
+    <h2>Addition/Subtraction</h2>
+    <p>Formula: Vector a +/- Vector b = ia +/- ib ihat ja +/- jb jhat ka +/- kb khat</p>
+    <ul id = "inputs">
+      <li><a>Vector A: i</a></li>
+      <li><textarea id = "aiAdd" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "ajAdd" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "akAdd" rows="1" cols="3"></textarea></li>
+    </ul>
+    <ul id = "inputs">
+      <li><a>Vector B: i</a></li>
+      <li><textarea id = "biAdd" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "bjAdd" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "bkAdd" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button id="add">Add Vectors</button>
+    <button id="sub">Subtract vectors</button>
+    <p id = "adOut"></p>
+
+    <h2>Multiplication/Division by a Scalar</h2>
+    <p>Formula: Vector a *// b = ia *// b ihat ja *// b jhat ka *// b khat</p>
+    <ul id = "inputs">
+      <li><a>A: </a></li>
+      <li><textarea id = "aMul" rows="1" cols="3"></textarea></li>
+    </ul>
+    <ul id = "inputs">
+      <li><a>Vector B: i</a></li>
+      <li><textarea id = "biMul" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "bjMul" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "bkMul" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button id="mul">Multiply Vector</button>
+    <button id="divi">Divide Vector</button>
+    <p id = "mult"></p>
+
+    <h2>Cross Product</h2>
+    <p>Formula: Vector a x vector b = aj x bk - ak x bj ihat ak x bi - ai x bk jhat + ai x bj - aj x bi khat or Vector a x Vector b = |a||b|sin(angle between a and b)</p>
+    <ul id = "inputs">
+      <li><a>Vector A: i</a></li>
+      <li><textarea id = "aiCro" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "ajCro" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "akCro" rows="1" cols="3"></textarea></li>
+    </ul>
+    <ul id = "inputs">
+      <li><a>Vector B: i</a></li>
+      <li><textarea id = "biCro" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "bjCro" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "bkCro" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button id="cro">Cross Vectors</button>
+    <p id = "cross"></p>
+
+    <h2>Dot Product</h2>
+    <p>Formula: Vector a dot vector b = ai * bi + aj * bj + ak * bk or Vector a dot Vector b = |a||b|cos(angle between a and b)</p>
+    <ul id = "inputs">
+      <li><a>Vector A: i</a></li>
+      <li><textarea id = "aiDot" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "ajDot" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "akDot" rows="1" cols="3"></textarea></li>
+    </ul>
+    <ul id = "inputs">
+      <li><a>Vector B: i</a></li>
+      <li><textarea id = "biDot" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "bjDot" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "bkDot" rows="1" cols="3"></textarea></li>
+    </ul>
+    <button id="dots">Dot Vectors</button>
+    <p id = "dot"></p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="vectors.js"></script>
+    <script type="text/javascript" src="physics.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <!-- can put a different script to handle clicks on this page-->
+  </body>
+</html>

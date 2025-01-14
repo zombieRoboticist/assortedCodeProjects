@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- These three meta needed for bootstrap -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Your Stylesheet -->
+    <link href="style.css" rel="stylesheet" />
+<!-- links it to css file -->
+  </head>
+  <body>
+    <nav id="nav">
+      <ul>
+          <li id="company-name">Robotics</li>
+          <li class="page-link"><a href="index.html">Home</a></li>
+          <li class="page-link"><a href="arms.html">Arm Systems</a></li>
+          <li class="page-link"><a href="electronic.html">Electrical Systems</a></li>
+          <li class="page-link"><a href="other.html">Other Math</a></li>
+          <!--<li class="page-link"><a href="Economics.html">Economics</a></li>-->
+        </ul>
+    </nav>
+    <!-- <p></p>
+    <div>
+      <textarea id = "name" rows="5" cols="30"></textarea>
+    </div> -->
+    <h2>Center of Gravity</h2>
+    <ul id = "inputs">
+      <li><a>i</a></li>
+      <li><textarea id = "cgi" rows="1" cols="3"></textarea></li>
+      <li><a>j</a></li>
+      <li><textarea id = "cgj" rows="1" cols="3"></textarea></li>
+      <li><a>k</a></li>
+      <li><textarea id = "cgk" rows="1" cols="3"></textarea></li>
+      <li><a>units</a></li>
+      <li><select id="units"><option value="1">Metric (cm)</option><option value="0">US Coustomary (in)</option></select></li>
+      <li><a>mass</a></li>
+      <li><textarea id = "rm" rows="1" cols="3"></textarea></li>
+      <li><a>tilt</a></li>
+      <li><textarea id = "tilt" rows="1" cols="3"></textarea></li>
+    </ul>
+    <h2>Contact Points</h2>
+    <div>
+      <p class = "dd">Number of Powered Contact Points:</p>
+      <select class = "dd" id="pcp">
+        <!-- <option value="0">0</option> -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <p class = "dd"> Is the Coefficient of Static Friction Known? </p>
+    <select id="fs">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+      <button id = "addpcp">add</button>
+    </div>
+    <ul id="pcpli" >
+      <li id="li1" class="st"><a>Position: i </a><textarea id="pi1" rows="1" cols="3"></textarea><a> j </a><textarea id="pj1" rows="1" cols="3"></textarea> <a> k </a><textarea id="pk1" rows="1" cols="3"></textarea><a class="sFrc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" class="sFrc" id="fsin1"></textarea><a> Wheel or Tread? </a><select id="des1"><option value="1">Wheel</option><option value="0">Treads</option></select><button class="lipp" id="btn1">next</button></li>
+
+      <li class="st" id="trans1"><a>Motor: Stall Torque </a><textarea id="mt1" rows="1" cols="3"></textarea><a> Free Speed </a><textarea id="ms1" rows="1" cols="3"></textarea><a> Gear Ratio from Motor to Wheel </a><textarea id="gr1" rows="1" cols="3"></textarea><a class="wh1"> Wheel Diameter </a><textarea class="wh1" id="wd1" rows="1" cols="3"></textarea><button class="finpcp" id="fin1">Finish Powered Contact Point</button></li>
+
+      <li id="li2" class="st"><a>Position: i </a><textarea id="pi2" rows="1" cols="3"></textarea><a> j </a><textarea id="pj2" rows="1" cols="3"></textarea> <a> k </a><textarea id="pk2" rows="1" cols="3"></textarea><a class="sFrc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" class="sFrc" id="fsin2"></textarea><a> Wheel or Tread? </a><select id="des2"><option value="1">Wheel</option><option value="0">Treads</option></select><button class="lipp" id="btn2">next</button></li>
+
+      <li class="st" id="trans2"><a>Motor: Stall Torque </a><textarea id="mt2" rows="1" cols="3"></textarea><a> Free Speed </a><textarea id="ms2" rows="1" cols="3"></textarea><a> Gear Ratio from Motor to Wheel </a><textarea id="gr2" rows="1" cols="3"></textarea><a class="wh2"> Wheel Diameter </a><textarea class="wh2" id="wd2" rows="1" cols="3"></textarea><button class="finpcp" id="fin2">Finish Powered Contact Point</button></li>
+
+      <li id="li3" class="st"><a>Position: i </a><textarea id="pi3" rows="1" cols="3"></textarea><a> j </a><textarea id="pj3" rows="1" cols="3"></textarea> <a> k </a><textarea id="pk3" rows="1" cols="3"></textarea><a class="sFrc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" class="sFrc" id="fsin3"></textarea><a> Wheel or Tread? </a><select id="des3"><option value="1">Wheel</option><option value="0">Treads</option></select><button class="lipp" id="btn3">next</button></li>
+
+      <li class="st" id="trans3"><a>Motor: Stall Torque </a><textarea id="mt3" rows="1" cols="3"></textarea><a> Free Speed </a><textarea id="ms3" rows="1" cols="3"></textarea><a> Gear Ratio from Motor to Wheel </a><textarea id="gr3" rows="1" cols="3"></textarea><a class="wh3"> Wheel Diameter </a><textarea class="wh3" id="wd3" rows="1" cols="3"></textarea><button class="finpcp" id="fin3">Finish Powered Contact Point</button></li>
+
+      <li id="li4" class="st"><a>Position: i </a><textarea id="pi4" rows="1" cols="3"></textarea><a> j </a><textarea id="pj4" rows="1" cols="3"></textarea> <a> k </a><textarea id="pk4" rows="1" cols="3"></textarea><a class="sFrc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" class="sFrc" id="fsin4"></textarea><a> Wheel or Tread? </a><select id="des4"><option value="1">Wheel</option><option value="0">Treads</option></select><button class="lipp" id="btn4">next</button></li>
+
+      <li class="st" id="trans4"><a>Motor: Stall Torque </a><textarea id="mt4" rows="1" cols="3"></textarea><a> Free Speed </a><textarea id="ms4" rows="1" cols="3"></textarea><a> Gear Ratio from Motor to Wheel </a><textarea id="gr4" rows="1" cols="3"></textarea><a class="wh4"> Wheel Diameter </a><textarea class="wh4" id="wd4" rows="1" cols="3"></textarea><button class="finpcp" id="fin4">Finish Powered Contact Point</button></li>
+    </ul>
+    <!-- <ul id="pcpIn"></ul> -->
+
+    <div>
+      <p class = "dd">Number of Static Contact Points:</p>
+      <select class = "dd" id="scp">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <p class = "dd"> Is Friction Negligable for Static Contact Points? </p>
+    <select id="fk">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+      <button id = "addscp">add</button>
+    </div>
+    <ul id="scpli" >
+      <li class="st" id="li5"><a>Position: i </a><textarea id="si5" rows="1" cols="3"></textarea><a> j </a><textarea id="sj5" rows="1" cols="3"></textarea> <a> k </a><textarea id="sk5" rows="1" cols="3"></textarea><a class="Frc"> Coefficient of Kinetic Fiction: </a><textarea rows="1" cols="3" id="ckf5" class="Frc"></textarea><a class="Frc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" id="csf5" class="Frc"></textarea><button class="finscp" id="fin5">Finish Static Contact Point</button></li>
+      <li class="st" id="li6"><a>Position: i </a><textarea id="si6" rows="1" cols="3"></textarea><a> j </a><textarea id="sj6" rows="1" cols="3"></textarea> <a> k </a><textarea id="sk6" rows="1" cols="3"></textarea><a class="Frc"> Coefficient of Kinetic Fiction: </a><textarea rows="1" cols="3" id="ckf6" class="Frc"></textarea><a class="Frc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" id="csf6" class="Frc"></textarea><button class="finscp" id="fin6">Finish Static Contact Point</button></li>
+      <li class="st" id="li7"><a>Position: i </a><textarea id="si7" rows="1" cols="3"></textarea><a> j </a><textarea id="sj7" rows="1" cols="3"></textarea> <a> k </a><textarea id="sk7" rows="1" cols="3"></textarea><a class="Frc"> Coefficient of Kinetic Fiction: </a><textarea rows="1" cols="3" id="ckf7" class="Frc"></textarea><a class="Frc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" id="csf7" class="Frc"></textarea><button class="finscp" id="fin7">Finish Static Contact Point</button></li>
+      <li class="st" id="li8"><a>Position: i </a><textarea id="si8" rows="1" cols="3"></textarea><a> j </a><textarea id="sj8" rows="1" cols="3"></textarea> <a> k </a><textarea id="sk8" rows="1" cols="3"></textarea><a class="Frc"> Coefficient of Kinetic Fiction: </a><textarea rows="1" cols="3" id="ckf8" class="Frc"></textarea><a class="Frc"> Coefficient of Static Fiction: </a><textarea rows="1" cols="3" id="csf8" class="Frc"></textarea><button class="finscp" id="fin8">Finish Static Contact Point</button></li>
+    </ul>
+    <div class="st" id="ansDiv">
+      <button class="st" id="ans">Calculate Movements</button>
+      <p id="answer"></p>
+    </div>
+    <!-- <ul id="scpIn"></ul> -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="vectors.js"></script>
+    <script type="text/javascript" src="physics.js"></script>
+    <script type="text/javascript" src="containers.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <!-- can put a different script to handle clicks on this page-->
+  </body>
+</html>

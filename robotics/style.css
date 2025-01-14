@@ -1,0 +1,23 @@
+#nav{
+  width: 90%;
+  margin: 0 auto;
+  padding-top:10px;
+  border-bottom: 1px solid gray;
+}
+li{
+  display: inline-block;
+}
+.page-link{
+  float: right;
+  margin-right: 20px;
+}
+.page-link a{
+  text-decoration: none;
+  color:black;
+}
+.page-link a:hover {
+  color: blue;
+}
+.dd{
+  display: inline-block;
+}
