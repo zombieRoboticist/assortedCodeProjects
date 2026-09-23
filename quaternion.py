@@ -1,5 +1,5 @@
 import numpy as np
-
+# https://mecademic.com/insights/academic-tutorials/quaternions-in-industrial-robotics/
 class Quaternion(object):
 
     def __init__(self,q1=0,q2=0,q3=0,q4=0):
