@@ -157,7 +157,7 @@ class Orientation(Quaternion):
         temp=u.normalize()
         halfDeg=math.radians(theta)/2
         return(Orientation(q1=math.cos(halfDeg), q2=temp.q2*math.sin(halfDeg), q3=temp.q3*math.sin(halfDeg), q4=temp.q4*math.sin(halfDeg)))
-    def getAngleAxis(self):
+    def getAxisAngle(self):
         """create a vector describing the axis and the angle around the axis described by the quaternion
 
         Inputs: self (q={cos(theta/2), ux sin(theta/2)/|u|, uy sin(theta/2)/|u|, uz sin(theta/2)/|u|})
@@ -204,7 +204,7 @@ class Orientation(Quaternion):
         output: the inverted Orientation Quaternion"""
         return Orientation(q1=self.q1,q2=-1*self.q2,q3=-1*self.q3,q4=-1*self.q4)
     def transform(p,v):
-        """do a coorinate transform of quaternion v by rotation described by self
+        """do a coorinate transform of quaternion v by rotation described by p
 
         Inputs: p, v (quaternion)
         Output: Vtransform (a quaternion describing the transformed V vtrans=p x V x p^-1)"""
@@ -219,18 +219,43 @@ class Orientation(Quaternion):
         if d.q1<0:
             d=-1*d
             flip=True
-        u,theta=d.getAngleAxis()
+        u,theta=d.getAxisAngle()
         return d,u,theta,flip
     def slerpStep(q,p,theta,t,flip=False):
         """spherical linear interpolation from orientation quaternion q to orientation quaternion p along torque minimal path with angle theta at interval t
 
-        Inputs: q (starting orientation quaternion), p (ending orientation quaternion), theta (angle of torque minimal path in degrees), t (interval of interpolation between 0 and 1, flip= if the rotation direction is flipped)
+        Inputs: q (starting orientation quaternion), p (ending orientation quaternion), theta (angle of torque minimal path in degrees), t (interval of interpolation between 0 and 1, flip (if the rotation direction is flipped, defaults to false)
         Output: an orientation quaternion described by the step t"""
         sign=1
         radHalf=math.radians(theta)/2
         if flip:
             sign=-1
         return (math.sin((1-t)*radHalf)*q+math.sin(t*radHalf)*sign*p)/math.sin(radHalf)
+    def slerpPath(q,p,n,allowFlip=True):
+        """list spherical linear interpolation points from orientation quaternion q to orientation quaternion p along torque minimal path at n intervals
+
+        Inputs: q (starting orientation quaternion), p (ending orientation quaternion), n (integer number of intervals), allowFlip ( allow the rotation direction to flip if the rotation direction is not correct for torque minimal path, defaults to true)
+        Output: an numpy array of n+1 orientation quaternions from each interval step starting at q and ending at p"""
+        d,u,theta,flip=Orientation.minRotation(q,p)
+        out=np.zeros(n+1)
+        if not allowFlip and flip:
+            thetap=-1*(360-theta)/2
+            pprime=Orientation.transform(Orientation.setAxisAngle(u,thetap),q)
+            np=(n-1)/2
+            if n%2==0:
+                np=np-.5
+            out1=Orientation.slerpPath(q,pprime,np,allowFlip=False)
+            out2=Orientation.slerpPath(pprime,p,np,allowFlip=False)
+            for i in np:
+                out[i]=out1[i]
+                out[i+np]=out2[i]
+            out[-1]=p
+            return out
+        for i in range(1,n):
+            out[i]=Orientation.slerpStep(q,p,theta,i/n,flip=flip)
+        out[0]=q
+        out[-1]=p
+        return out
         
 def test():
     t1=Quaternion(1,2,3,4)
