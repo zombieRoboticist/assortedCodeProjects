@@ -2,7 +2,7 @@ import numpy as np
 import math
 # https://mecademic.com/insights/academic-tutorials/quaternions-in-industrial-robotics/
 class Quaternion(object):
-
+    "Implementation of quaternion methods"
     def __init__(self,q1=0,q2=0,q3=0,q4=0):
         """ class initialization function
 
@@ -138,9 +138,21 @@ class Quaternion(object):
         if isinstance(other,Quaternion):
             return self.__matmul__(other)
         return NotImplemented
+    def dot(self,omega):
+        """implement cross product method to take temporal derivative
+
+        Input: self, omega (pure vector describing angular velocity)
+        Output: a vector describing the derivative of the quaternion"""
+        return .5*omega*self
+    def ddot(self,omega,alpha):
+        """implement cross product method to take temporal derivative
+
+        Input: self, omega (pure vector describing angular velocity), alpha (pure vector describing angular acceleration)
+        Output: a vector describing the second derivative of the quaternion"""
+        return .25*omega*omega*self+.5*alpha*self
 
 class Vector(Quaternion):
-    """Also called a pure quaternion, it only exists in the 3 imaginary axis of the quaternion"""
+    """Implementation of vector mathematics using quaternions. Also called a pure quaternion, it only exists in the 3 imaginary axis of the quaternion"""
     def __init__(self,i=0,j=0,k=0):
         """ class initialization function
 
@@ -149,6 +161,7 @@ class Vector(Quaternion):
         super().__init__(q1=0,q2=i,q3=j,q4=k)
 
 class Orientation(Quaternion):
+    "implementation of unit quaternions for use as orientation representations"
     def setAxisAngle(u, theta):
         """create a quaternion with a given axis and angle
 
