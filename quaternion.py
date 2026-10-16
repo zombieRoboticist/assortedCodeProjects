@@ -140,16 +140,36 @@ class Quaternion(object):
         return NotImplemented
     def dot(self,omega):
         """implement cross product method to take temporal derivative
-
+    https://www.iri.upc.edu/people/jsola/JoanSola/objectes/notes/kinematics.pdf pg 21
         Input: self, omega (pure vector describing angular velocity)
         Output: a vector describing the derivative of the quaternion"""
-        return .5*omega*self
+        return .5*self*omega
     def ddot(self,omega,alpha):
         """implement cross product method to take temporal derivative
-
+https://www.iri.upc.edu/people/jsola/JoanSola/objectes/notes/kinematics.pdf pg 21
         Input: self, omega (pure vector describing angular velocity), alpha (pure vector describing angular acceleration)
         Output: a vector describing the second derivative of the quaternion"""
-        return .25*omega*omega*self+.5*alpha*self
+        return .25*self*omega*omega+.5*self*alpha
+    def exp(w=self):
+        """implement exponetial function (e^w) for quaternions
+https://www.iri.upc.edu/people/jsola/JoanSola/objectes/notes/kinematics.pdf
+        inputs: w (quaternion defaults to self)
+        output: a quaternion describing  e^w"""
+        theta=w.norm()
+        sin=math.sin(theta)
+        return math.exp(w.q1)*Quaternion(q1=math.cos(theta),q2=w.q2*sin/theta,q3=w.q3*sin/theta,q4=w.q4*sin/theta)
+    def wdt(w,dt)
+        """implements the step update for a quaternion rotated at angular velocity w for time step dt
+
+        Inputs: w (a pure quaternion describing the angular velocity), dt (the timestep for the update)
+        output: a quaternion describing the change in orientation"""
+        return (w*dt/2).exp()
+    def rotateQuaternion(q=self,p):
+        """implements the step update to rotate a quaternion q by step p=w*dt
+
+        inputs: q (quaternion, default = self) p (quaternion)
+        output a quaternion defined as q*p"""
+        return q*p
 
 class Vector(Quaternion):
     """Implementation of vector mathematics using quaternions. Also called a pure quaternion, it only exists in the 3 imaginary axis of the quaternion"""
